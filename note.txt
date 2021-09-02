@@ -1,0 +1,32 @@
+1. / 的返回值是float， //返回值是int
+2. Built-in Atomic Data Types （int / float / bool ）
+3. collection data types
+4. 所有python序列数据都可以使用的方法（[]，+，*, len(), in,[:] ）
+5. list-[, ],可变对象，异构（可包含不同数据类型）,有序。10可使用的方法（/.append(items) /.insert(i,items) /.pop() /.pop(i)
+        /del alist[i] /.remove(items),return none /.sort(),return none /.reverse(),return none
+        /.count(items) /.index(items) /.copy(),深拷贝
+6.string，不可变对象，有序。8可使用的方法 /.lower() /.upper() /.split(an element) /.center(len) /.ljust(len) /.rjust(len)
+        /.count(items) /.find(items)-第一次出现时候的下标
+7. tuple-（， ）,不可变对象，异构，有序。
+8. set-{, },异构，无重复对象，无序，可变（）储存的对象均不可变，相当于dict的key，但不储存value。
+        6支持的运算 /in /len() /a|b,合集 /a&b 交集 /a-b，差集， /a<=b,a中的元素是否都在b
+        8提供的方法. /.union(otherset),合集 /.intersection(otherset)，交集 /.difference(otherset)，差集
+        /.issubset(otherset) /.add(items) /.remove(items) /.pop(),随机一个 /.clear()清空
+9. dict-{key:value, }-可变对象，但key为不可变对象，不可重复，无序。
+        支持的运算：/adict[key] /del adict[key] /key in dict
+        methods: /.keys() /.values() /.items() 都可用list（）列出
+                /.get(key),key不存在，返回None /.(key,alt)，key不存在，返回alt
+10.set的原理和dict一样，所以，同样不可以放入可变对象，因为无法判断两个可变对象是否相等，也就无法保证set内部“不会有重复元素”
+11.print,sep默认为空格，end默认为换行符
+    print('hello','world',sep='~~',end='!!')
+12.格式化字符串
+    /d,i-整数。/f,e,E-默认六位小数。 /g,指数<-4,>5使用e，否则使用f。 /c,单个字符。 /s字符串
+    /20d，20个字符长度。 /-20d，左对齐 /+20d，右对齐 /020d，长20，补齐0 /20.3f，
+    format
+13.for/while/if
+14.alist=[x*x for x in range(1,11) if x%2 ==0]
+
+
+15. The first method that all classes should provide is the constructor（__init__）. The constructor defines the
+    way in which data objects are created.
+
