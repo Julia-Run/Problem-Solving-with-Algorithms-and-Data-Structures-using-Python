@@ -1,3 +1,4 @@
+第一章：基础知识复习
 1. / 的返回值是float， //返回值是int
 2. Built-in Atomic Data Types （int / float / bool ）
 3. collection data types
@@ -29,4 +30,18 @@
 
 15. The first method that all classes should provide is the constructor（__init__）. The constructor defines the
     way in which data objects are created.
-
+第三章--基本数据结构：
+1. Stack，只能对顶端元素操作。基本method-- /.pop() /.peek() /.push(item) /.size() /.isEmpty() /a=Stack() //Stack可以简单的用
+    list表示
+2. 括号匹配问题：三个出错原因---左括号多，右括号多，顶端括号不匹配，方法一：Stack（）解决 （from pythonds.basic import Stack）
+3. 进制转换：采用除以base的方案，第一个余数是转换后的最后一个。方案一：Stack（）解决。
+4. 中序到后序表达式
+    1.参数顺序排列(用list即可).
+        str.split(), 默认为以空格分隔str，可以多个空格，输出为list
+        ‘ ’.join(sequence), 将一个sequence变成str，此处为空格链接
+    2.操作符和括号压入stack的过程：
+        1.最基础的：遇到右括号，将内部的操作符放入参数所在list
+        2.省略操作符的情况：
+            前方有优先级更高的操作符（即有默认小括号），先将该操作符取出，再压入。
+            前方为空，直接压入
+    3.最后可能有剩余操作符，最后取出即可。
