@@ -9,11 +9,11 @@ import string
 #     while num > 0:
 #         result_inv.push(num % base)
 #         num = num // base
-#     i = 0
+#     i = 0 # delete
 #     result = ''
 #     while not result_inv.isEmpty():
 #         result = result + digitals[result_inv.pop()]
-#         i = i + 1
+#         i = i + 1 #delete
 #     print(result)
 #     return result
 #
