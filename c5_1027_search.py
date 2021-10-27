@@ -99,42 +99,64 @@ print(search4(test_list4, 223))
 class HashTable:
     def __init__(self, size):
         self.size = size
-        self.slots = [None] * self.size  # 储存key（依据k的hashnum）
-        self.data = [None] * self.size  # 储存data（依据k的hashnum）
+        self.slots = [None] * self.size  # 储存key（依据k的hashnumber）
+        self.data = [None] * self.size  # 储存data（依据k的hashnumber）
 
-    def put(self, key, value):
-        slot = self.hashnum(key)
-        if self.slots[slot] is None:
-            self.slots[slot] = key
-            self.data[slot] = value
-        else:
-            if self.slots[slot] == key:
-                self.data[slot] = value
-            else:
-                ini = slot
-                i = 1
-                put = False
-                while i < self.size and not put:
-                    if slot == self.size - 1:
-                        slot = 0
-                    else:
-                        slot += 1
-                    if self.slots[slot] is None:
-                        self.slots[slot] = key
-                        self.data[slot] = value
-                        put = True
-                    i += 1
-                if put is False:
-                    print('No More Space, "%s : %s" can NOT be put in' % (key, value))
+    # def put(self, key, value):
+    #     # 处理冲突，采用顺序查找法**************************************************************
+    #     hashnumber = self.hashnum(key)
+    #     if self.slots[hashnumber] is None:
+    #         self.slots[hashnumber] = key
+    #         self.data[hashnumber] = value
+    #     else:
+    #         if self.slots[hashnumber] == key:
+    #             self.data[hashnumber] = value
+    #         else:
+    #             i = 1
+    #             put = False
+    #             while i < self.size and not put:
+    #                 if hashnumber == self.size - 1:
+    #                     hashnumber = 0
+    #                 else:
+    #                     hashnumber += 1
+    #                 if self.slots[hashnumber] is None:
+    #                     self.slots[hashnumber] = key
+    #                     self.data[hashnumber] = value
+    #                     put = True
+    #                 i += 1
+    #             if put is False:
+    #                 print('No More Space, "%s : %s" can NOT be put in' % (key, value))
 
     def hashnum(self, key):
         return key % self.size
+
+    def rehash(self, oldhash):
+        return (oldhash + 1) % self.size
+
+    def put(self, key, value):
+        # 处理冲突，采用rehash**************************************************************
+        hashnumber = self.hashnum(key)
+        if self.slots[hashnumber] is None:
+            self.slots[hashnumber] = key
+            self.data[hashnumber] = value
+        else:
+            if self.slots[hashnumber] == key:
+                self.data[hashnumber] = value
+            else:
+                newhash = self.rehash(hashnumber)
+                while self.slots[newhash] is not None and self.slots[newhash] != key:
+                    newhash = self.rehash(newhash)
+                if self.slots[newhash] is None:
+                    self.slots[newhash] = key
+                    self.data[newhash] = value
+                else:
+                    self.data[hashnumber] = value
 
     def __setitem__(self, key, value):
         return self.put(key, value)
 
 
-H = HashTable(4)
+H = HashTable(11)
 H[54] = "cat"
 H[26] = "dog"
 H[21] = 'duck'
@@ -142,6 +164,6 @@ H[11] = 'monkey'
 H[93] = "lion"
 H[20] = "chicken"
 print(H.slots, H.data)
-# for i in range(H.size):
-#     if H.slots[i] is not None:
-#         print(H.slots[i], '-->', H.data[i])
+for i in range(H.size):
+    if H.slots[i] is not None:
+        print(H.slots[i], '-->', H.data[i])
