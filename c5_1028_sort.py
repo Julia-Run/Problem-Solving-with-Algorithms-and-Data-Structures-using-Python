@@ -180,6 +180,7 @@ print(merge(test_list5))
 
 # 快速排序
 def splitpoint(alist, start, end):
+    # 锁定分割位的index
     key = alist[start]
     left, right = start + 1, end
     found = False
@@ -198,16 +199,17 @@ def splitpoint(alist, start, end):
 
 
 def quick(alist):
+    maincode(alist, 0, len(alist) - 1)
+
+
+def maincode(alist, start, end):
     # 分割,得到分割位置的index
     # 左分割，直到左边排序完成，如何确定左排序完成？
     # 右分割直到右边排序完成
-    left = splitpoint(alist, 0, len(alist) - 1)
-    right = splitpoint(alist, 0, len(alist) - 1)
-    while left > 0:
-        left = splitpoint(alist, 0, left - 1)
-    k = splitpoint(alist, right + 1, len(alist) - 1)
-    while k > right + 1:
-        k = splitpoint(alist, right + 1, len(alist) - 1)
+    while start < end:
+        p = splitpoint(alist, start, end)
+        maincode(alist, start, p - 1)
+        maincode(alist, p + 1, end)
     return alist
 
 
