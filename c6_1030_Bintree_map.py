@@ -3,6 +3,7 @@
 # 二叉搜索树：对任意一个节点，比节点值小的值放在左子值，大的放在右子树，也叫做二叉搜索性
 # 必须处理并创建一颗空的二叉树，因此在实现的过程中必须使用两个类，涉及两个类的耦合问题
 # put函数，新来的一定被放在最后，无论大小
+# debug failed
 class TreeNode(object):
     def __init__(self, key, val, lc=None, rc=None, par=None):
         self.key = key
