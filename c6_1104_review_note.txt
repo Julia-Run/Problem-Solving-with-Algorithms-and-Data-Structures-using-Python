@@ -1,0 +1,65 @@
+第三章：
+抽象数据类型的实现（eg。栈的实现）被称为数据结构
+1.Stack; 有序集合，LIFO。可用python列表实现。Stack（） 、 isEmpty（） 、 pop（）、push（）、peek()、size()
+    1.括号的匹配（三种错误）
+    2.十进制转换成任意进制
+    3.中序表达式转换为后续表达式，计算后续表达式，组成calculator
+2.Queue；有序。FIFO。可用列表实现。Queue（）、isEmpty（）、enqueue（）、dequeue（）、size（）
+    1.传土豆 2.打印机
+3.Deque.可用列表实现。addFront（）、addRear（）、removeFront（）、removeRear（）、isEmpty（）、size（）
+    1.回文数的判定
+4.List（）列表，可用来实现上述三种数据结构。add（）、insert（i，item）、append（）、remove（）、pop（）、pop(i)、search（）、length（）
+    1.无序列表UnorderedList--链表的实现：Node（data+指向【下一个Node】）+ List（self.head——None）
+        ;实现add、search、remove、length方法
+    2.有序列表OrderedList
+        ；实现add、search
+
+第四章--递归：
+1.一些简单的案例:累加、累乘、十进制转换成任意进制
+2.三原则：基本情况（最简单的情况）、自己调用自己、改变条件逐渐靠近基本情况
+3.栈帧：实现dig
+4.递归可视化：二叉树、谢尔平斯基三角形
+5.解决问题：
+    1.汉诺塔问题 2.走迷宫
+6.找零钱的问题：递归、动态规划
+
+第五章：搜索和排序
+1.搜索：顺序搜索，二分搜索
+    1.引入新的数据结构：散列。散列表一般为奇数个 hash table
+        1.载荷因子
+        2.散列函数：建立要存储的data和散列表index之间的联系，返回一个index。（eg。取余数，折叠法，平方取中）--会冲突
+        3.解决冲突（再散列）：
+            1.开放定址，线性探测+1（or 扩展线性探测 +3）--容易聚集 newhashvalue = rehash(oldhashvalue)，and rehash(pos) = (pos + 1)%sizeoftable。
+            2.平方探测 newhashvalue = rehash(oldhashvalue)，and rehash(pos) = (pos + n^2)%sizeoftable，n=1，2，3，4……
+            3.链表：一个位置存放多个元素
+    2.构建映射数据结构（两个list构建hashtable）
+2.排序：
+    1.冒泡
+    2.选择
+    3.插入
+    4.希尔
+    5.归并
+    6.快速
+
+第六章：树（BinaryTree）
+1.列表实现、节点实现
+2.解析树，将完全括号表达式表示成解析树，计算该解析树
+3.树的遍历：前中后序
+4.二叉堆（BinaryHeap）实现优先级队列
+    1.最小堆的实现：父节点总是比子节点小。完全二叉树，叶子从左向右顺序排。
+        实现：insert（）、deletemin（）、buildrromlist（）。用list就可以实现：注意，list第一个元素为0
+    key：放置元素一定会放置在叶子上，然后向上推
+5.二叉搜索树的实现--（实现dict）小于root放左边，大于root放右边
+    1.节点法实现（节点和引用+root。和链表的构造有一点类似）
+        put（key，val），get（key）、delete（key）
+    key：整体下压成一条线，从左向右递增，root的val为临界值。所以当root被删除时，要么用左边最小，要么用右边最大代替
+    key：元素一定放置在叶子上
+6.AVL平衡二叉搜索树。
+    放置的元素一定在叶子上，要更新前面的平衡因子，更新过程中，如果遇到左右倾，要旋转。
+
+第七章：图
+1.图的实现。
+2.词梯问题--BFS
+3.骑士周游--DFS：
+    递归方法、Wornsdorff沃斯多夫算法（向空格最小的方向走）
+
